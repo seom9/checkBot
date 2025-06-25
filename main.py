@@ -162,6 +162,9 @@ system_message = """
 
 사용자가 이 규칙에 대해 궁금한 점을 물어보면 명확하고 친절하게 답변해 줘.  
 규칙과 관련 없는 질문이 들어오면 "이건 스터디 규칙과는 관련 없는 질문이야"라고 안내해 줘.
+
+# 중요
+규칙을 알려주고 나서는 무조건 코딩에 관한 명언 하나씩을 하면서 스터디원에게 공부를 독려해 줘.
 """
 
 # gpt 에게 질문하기
@@ -172,8 +175,8 @@ def ask_study_bot(question: str) -> str:
             {"role": "system", "content": system_message},
             {"role": "user", "content": question}
         ],
-        temperature=0.5, # 창의성, 다양성 조절 높을수록 창의력 높음
-        max_tokens=100, # 응답 글자 수 제한
+        temperature=0.9, # 창의성, 다양성 조절 높을수록 창의력 높음
+        max_tokens=200, # 응답 글자 수 제한
     )
     return response.choices[0].message.content
 
